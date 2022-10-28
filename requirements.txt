@@ -1,0 +1,14 @@
+numpy
+qiskit
+ibm_quantum_widgets
+celluloid
+matplotlib
+numba
+icc-rt
+selenium
+webdriver_manager
+jupyter
+# jupyter_rfb
+# vispy
+# PyQt5
+# glfw
