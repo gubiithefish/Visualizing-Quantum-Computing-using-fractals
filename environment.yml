@@ -12,4 +12,4 @@ dependencies:
   - ibm_quantum_widgets==1.0.3
   - celluloid==0.2.0
   - tqdm==4.64.1
-  - matplotlib=3.6.1
+  - matplotlib==3.6.1
