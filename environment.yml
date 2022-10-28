@@ -6,7 +6,10 @@ dependencies:
 - ipywidgets
 - pip
 - pip:
-  - numpy==1.22.4
-  - qiskit==0.36.2
+  - numpy==1.23.4
+  - numba==0.56.3
+  - qiskit==0.39.0
   - ibm_quantum_widgets==1.0.3
   - celluloid==0.2.0
+  - tqdm==4.64.1
+  - matplotlib=3.6.1
