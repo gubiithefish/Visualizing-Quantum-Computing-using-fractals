@@ -208,15 +208,6 @@ for i in range(number_of_frames):
         QFI.qf_animations(ax=gif_ax)
         QFI.qf_images(ax=img_ax)
 
-        # Console logging output:
-        complex_numb = round(ccc[0].real, 2) + round(ccc[0].imag, 2) * 1j
-        complex_amp1 = round(ccc[2][0].real, 2) + round(ccc[2][0].imag, 2) * 1j
-        complex_amp2 = round(ccc[2][1].real, 2) + round(ccc[2][1].imag, 2) * 1j
-        print(f"Loop i = {i:>2} | One complex no = {complex_numb:>13} | "
-              f"Complex amplitude one: {complex_amp1:>13} and two {complex_amp2:>13} | "
-              f"QuantumCircuit: {round(timer['QuantumCircuit'], 4):>6} | "
-              f"Julia_calculations: {round(timer['Julia_calculations'], 4):>6} | "
-              f"Animation: {round(timer['Animation'], 4):>6} | Image: {round(timer['Image'], 4):>6} |")
     except (NoSuchWindowException, WebDriverException):
         print("Error, Browser window closed during generation of images")
         raise traceback.format_exc()

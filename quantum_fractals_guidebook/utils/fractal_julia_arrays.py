@@ -1,4 +1,6 @@
-
+#!/usr/bin/env python
+# coding: utf-8
+# Credits & License: https://github.com/wmazin/Visualizing-Quantum-Computing-using-fractals
 
 # Importing standard python libraries
 from typing import Union

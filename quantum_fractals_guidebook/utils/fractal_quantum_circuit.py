@@ -1,17 +1,18 @@
 #!/usr/bin/env python
 # coding: utf-8
-# Credits: https://github.com/wmazin/Visualizing-Quantum-Computing-using-fractals
+# Credits & License: https://github.com/wmazin/Visualizing-Quantum-Computing-using-fractals
 
 # ───────────────────────────────────────────────────────────
 # Importing standard python libraries
-from typing import Tuple, List, Literal, Union
+from typing import Tuple, Literal, Union
 from enum import Enum, EnumMeta
 from math import pi
 
 # Importing standard Qiskit libraries
-from qiskit import QuantumCircuit, Aer, execute
+from qiskit import QuantumCircuit
+from qiskit.quantum_info import Statevector
+from numpy import array, ndarray
 import numpy as np
-
 
 # Enum dataclasses
 # ───────────────────────────────────────────────────────────
@@ -33,8 +34,7 @@ class Rotate(Enum, metaclass=CaseInsensitiveEnumMeta):
 class FractalQuantumCircuit:
     def __init__(self, number_of_qubits: int = 1, quantum_circuit: Union[QuantumCircuit, None] = None,
                  total_number_of_frames: int = 60) -> None:
-        # Define the backend to run the Quantum Circuit
-        self.backend = Aer.get_backend('statevector_simulator')
+        # Define the number of qubits and frames for the fractal
         self.n_qubits = number_of_qubits
         self.n_frames = total_number_of_frames
 
@@ -47,7 +47,7 @@ class FractalQuantumCircuit:
 
     # noinspection PyUnresolvedReferences
     def get_quantum_circuit(self, rotate: Literal[Rotate.FIRST, Rotate.LAST, Rotate.ALL] = "first",
-                            frame_iteration: int = 0) -> Tuple[np.complex128, QuantumCircuit, List[np.complex128]]:
+                            frame_iteration: int = 0) -> Tuple[np.complex128, QuantumCircuit, ndarray[np.complex128]]:
         # In case quantum_circuit is already defined, delete the variable before assigning
         # it again to prevent multiple copies of the class variable being saved in memory
         if "quantum_circuit" in globals():
@@ -73,7 +73,7 @@ class FractalQuantumCircuit:
             quantum_circuit.rz(phi_rotation, rotation_index)
 
         # Simulate the Quantum Circuit and extract the statevector
-        statevector_array = execute(quantum_circuit, self.backend).result().get_statevector()
+        statevector_array = Statevector(quantum_circuit)
         statevector_idx_n = statevector_array.data
         statevector_idx_0 = statevector_array.data[0]
         statevector_idx_1 = statevector_array.data[1]
@@ -85,4 +85,4 @@ class FractalQuantumCircuit:
         else:
             statevector_new = 0
 
-        return statevector_new, quantum_circuit, statevector_idx_n
+        return statevector_new, quantum_circuit, array(statevector_idx_n)
