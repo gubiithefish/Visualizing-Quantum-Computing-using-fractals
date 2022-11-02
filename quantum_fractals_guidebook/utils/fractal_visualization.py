@@ -67,7 +67,7 @@ class QuantumFractalVisualization:
         plt.rcParams['font.family'] = prop.get_name()
         plt.rcParams["figure.figsize"] = (20, 5)
         plt.rcParams['figure.dpi'] = 60
-        
+
         # Dynamically change the number of items included in the final output image
         img_fig, img_ax = plt.subplots(1, len(viz_data), figsize=(20, 5), clear=True)
         clear_output(wait=True)
