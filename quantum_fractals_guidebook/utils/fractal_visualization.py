@@ -134,8 +134,8 @@ class QuantumFractalVisualization:
     def qf_interactive_animation(self, quantum_circuit, frame_no, z_arr, con_arr, div_arr, height, width, interval):
         plt.rcParams['font.family'] = prop.get_name()
         plt.rcParams["animation.html"] = "jshtml"
-        plt.rcParams['figure.dpi'] = 60
         plt.rcParams["figure.figsize"] = (20, 5)
+        plt.rcParams['figure.dpi'] = 60
 
         anim_fig, anim_ax = plt.subplots(nrows=1, ncols=4)
         anim_fig.subplots_adjust(top=0.85, wspace=0.1, left=0, bottom=0.1, right=1)
